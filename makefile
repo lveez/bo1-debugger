@@ -1,5 +1,5 @@
-src_dir := $(CURDIR)/src
-bin_dir := $(CURDIR)/bin
+src_dir := ./src
+bin_dir := ./bin
 
 SRC = $(wildcard $(src_dir)/*.cpp $(src_dir)/*/*.cpp)
 
@@ -11,4 +11,7 @@ LDFLAGS := -L./dep/lib
 LDLIBS := -lminhook
 
 all:
-	$(CXX) $(ALL_CXXFLAGS) $(SRC) $(LDFLAGS) $(LDLIBS) -I./dep/inc -o$(bin_dir)/bo1-debugger.dll
+	$(CXX) $(ALL_CXXFLAGS) -H $(SRC) $(LDFLAGS) $(LDLIBS) -I./dep/inc -o$(bin_dir)/bo1-debugger.dll
+
+header:
+	$(CXX) $(CXXFLAGS) -std=c++20 src/stdc++.hpp
