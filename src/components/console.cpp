@@ -77,7 +77,7 @@ void DumpThreadsToFileAndAnalyse() {
     std::thread{threads::DebugThreads, true, true}.detach();
 }
 
-void __cdecl GivePoints() { /* cdecl or crashes randomly */
+void GivePoints() { /* crashes randomly */
     g::types::CmdArgs* args = reinterpret_cast<g::types::CmdArgs*>(g::fn::Sys_GetValue(4));
     int argc = args->argc[args->nesting];
 

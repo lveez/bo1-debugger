@@ -14,7 +14,7 @@ __declspec(selectany) auto Con_CancelAutoComplete = reinterpret_cast<void (*)(vo
 // __declspec(selectany) auto Dvar_AddCommands = reinterpret_cast<void (*)(void)>(0x600e00);
 __declspec(selectany) auto Cmd_AddCommandInternal = reinterpret_cast<void (*)(const char*, void (*)(void), types::cmd_function_s*)>(0x661400);
 // __declspec(selectany) auto Cmd_FindCommand = reinterpret_cast<types::cmd_function_s* (*)(char*)>(0x479dd0);
-__declspec(selectany) auto Sys_GetValue = reinterpret_cast<void*(__cdecl*)(int)>(0x67d4f0); /* TODO: do we need __cdecl? */
+__declspec(selectany) auto Sys_GetValue = reinterpret_cast<void* (*)(int)>(0x67d4f0);
 
 /* init */
 // __declspec(selectany) auto Com_Init = reinterpret_cast<void (*)(char*)>(0x4069c0);
