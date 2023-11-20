@@ -1,5 +1,7 @@
 #include "stdc++.hpp"
 
+#include "components/debugger.hpp"
+
 BOOL Init() {
     /* allocate external consol */
     if (AllocConsole()) {

@@ -5,6 +5,7 @@
 #include <windows.h>
 
 /* std libs */
+#include <algorithm>
 #include <format> /* c++20 */
 #include <iostream>
 #include <string>
