@@ -23,7 +23,7 @@ BOOL OnAttach() {
     return TRUE;
 }
 
-BOOL APIENTRY DllMain(HMODULE h_module, DWORD ul_reason_for_call, LPVOID lp_reserved) {
+BOOL APIENTRY DllMain(HMODULE, DWORD ul_reason_for_call, LPVOID) {
     if (ul_reason_for_call == DLL_PROCESS_ATTACH) {
         return OnAttach();
     }

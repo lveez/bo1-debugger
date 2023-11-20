@@ -116,8 +116,8 @@ void DebugThreads(bool dump_to_file, bool analysis) {
 
     /* use two seperate for loops so can sort by count */
     /* count uses of each thread pos */
-    for (auto& thread : thread_pos_count) {
-        thread.second = std::count(thread_positions.begin(), thread_positions.end(), thread.first);
+    for (auto& [pos, count] : thread_pos_count) {
+        count = std::count(thread_positions.begin(), thread_positions.end(), pos);
     }
 
     /* sort so highest count is at the bottom */
@@ -129,14 +129,14 @@ void DebugThreads(bool dump_to_file, bool analysis) {
         },
         &std::pair<std::string, int>::second);
 
-    for (const auto& thread : thread_pos_count) {
+    for (const auto& [pos, count] : thread_pos_count) {
         /* print uses */
         if (file.is_open()) {
-            file << thread.first;
-            file << "count: " << thread.second << "\n\n";
+            file << pos;
+            file << "count: " << count << "\n\n";
         }
-        std::cout << thread.first;
-        std::cout << "count: " << thread.second << "\n\n";
+        std::cout << pos;
+        std::cout << "count: " << count << "\n\n";
     }
 
     file.close();

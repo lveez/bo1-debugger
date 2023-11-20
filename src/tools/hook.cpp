@@ -29,7 +29,7 @@ void Hook::Disable() {
 
 void Hook::Create_(LPVOID fn_to_hook, LPVOID detour_fn, bool enable) {
     address_ = fn_to_hook;
-    MH_CreateHook(fn_to_hook, detour_fn, reinterpret_cast<LPVOID*>(&original_));
+    MH_CreateHook(fn_to_hook, detour_fn, &original_);
 
     if (enable) {
         this->Enable();

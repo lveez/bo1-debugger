@@ -18,7 +18,7 @@ __declspec(selectany) auto Sys_GetValue = reinterpret_cast<void*(__cdecl*)(int)>
 
 /* init */
 // __declspec(selectany) auto Com_Init = reinterpret_cast<void (*)(char*)>(0x4069c0);
-__declspec(selectany) auto CG_Init = reinterpret_cast<void (*)(int, int, int, int)>(0x64f710);
+// __declspec(selectany) auto CG_Init = reinterpret_cast<void (*)(int, int, int, int)>(0x64f710);
 
 /* scr parsing */
 // __declspec(selectany) auto Scr_ReadFile_FastFile = reinterpret_cast<char* (*)(types::scriptInstance_t, char*, char*, char*, bool)>(0x8a57b0);
@@ -34,6 +34,13 @@ __declspec(selectany) auto Com_Printf = reinterpret_cast<void (*)(int, const cha
 // __declspec(selectany) auto Dvar_FindVar = reinterpret_cast<const types::dvar_t* (*)(const char*)>(0x5ae810);
 __declspec(selectany) auto Dvar_SetCommand = reinterpret_cast<void (*)(const char*, const char*)>(0x40c0d0);
 __declspec(selectany) auto Dvar_GetString = reinterpret_cast<const char* (*)(const char*)>(0x57ff80);
+
+/* allocation */
+// __declspec(selectany) auto AllocValue = reinterpret_cast<unsigned int(__cdecl*)()>(0x8a6d20);
+// __declspec(selectany) auto AllocVariable = reinterpret_cast<unsigned short (*)(int)>(0x51f7c0);
+
+/* running scripts */
+// __declspec(selectany) auto VM_Execute = reinterpret_cast<unsigned int (*)(types::scriptInstance_t, unsigned int, const char*, unsigned int)>(0x8ace60);
 
 };  // namespace fn
 };  // namespace game

@@ -119,10 +119,10 @@ struct VariableValue {
 static_assert(sizeof(VariableValue) == 8);
 
 struct function_stack_t {
-    char* pos;
-    VariableValue* top;
+    const char* pos;
     unsigned int localId;
     unsigned int localVarCount;
+    VariableValue* top;
     VariableValue* startTop;
 };
 
@@ -178,6 +178,9 @@ union VariableValueInternal_u {
     ObjectInfo o;
 };
 
+/* 0x1f gets type */
+/* 0x60 gets status */
+/* >> 8 gets ? */
 union VariableValueInternal_w {
     unsigned int status;
     unsigned int type;
@@ -341,7 +344,7 @@ enum VarTypes {
     VAR_RUNNING_THREAD = 0xd, /* Scr_GetThreadPos */
     VAR_WAITTILL_THREAD = 0xe,
     VAR_WAIT_THREAD = 0xf,
-    VAR_OBJECT2 = 0x11,
+    VAR_CHILD = 0x11, /* not sure */
     VAR_ENTITY = 0x13,
     VAR_ARRAY = 0x14,
 };
@@ -378,6 +381,7 @@ __declspec(selectany) types::scrVarPub_t* gScrVarPub = reinterpret_cast<types::s
 __declspec(selectany) types::scrVarGlob_t* gScrVarGlob = reinterpret_cast<types::scrVarGlob_t*>(0x32c8580);
 
 __declspec(selectany) types::scrVmPub_t* gScrVmPub = reinterpret_cast<types::scrVmPub_t*>(0x32c8738);
+// __declspec(selectany) types::function_stack_t* function_stack = reinterpret_cast<types::function_stack_t*>(0x32d1e38);
 
 __declspec(selectany) types::scrParserPub_t* gScrParserPub = reinterpret_cast<types::scrParserPub_t*>(0x32683ec);
 __declspec(selectany) types::scrParserGlob_t* gScrParserGlob = reinterpret_cast<types::scrParserGlob_t*>(0x3268380);

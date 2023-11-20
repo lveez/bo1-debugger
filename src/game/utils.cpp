@@ -4,7 +4,7 @@ namespace game {
 namespace utils {
 
 bool IsStackVariable(const types::VariableValueInternal& var) {
-    if (var.w.status & 0x60 == 0)  // status = free
+    if ((var.w.status & 0x60) == 0)  // status = free
         return false;
 
     if ((var.w.type & 0x1f) == types::VAR_STACK)
@@ -19,7 +19,7 @@ unsigned int GetSourceBufferPosition(types::scriptInstance_t script_instance, co
     }
 
     size_t idx = globals::gScrParserGlob[script_instance].opcodeLookupLen - 1;
-    for (idx; idx >= 0; idx--) {
+    for (;; idx--) {
         if (globals::gScrParserGlob[script_instance].opcodeLookup[idx].codePos == nullptr) {
             return 0xffffffff;
         }
@@ -40,12 +40,16 @@ unsigned int GetSourceBufferIndex(types::scriptInstance_t script_instance, const
     }
 
     /* start at top, find first codepos lower than our codepos and return that source buffer index */
-    for (size_t idx = globals::gScrParserPub[script_instance].sourceBufferLookupLen - 1; idx >= 0; idx--) {
+    for (size_t idx = globals::gScrParserPub[script_instance].sourceBufferLookupLen - 1;; idx--) {
         if (globals::gScrParserPub[script_instance].sourceBufferLookup[idx].codePos == nullptr)
             continue;
 
         if (globals::gScrParserPub[script_instance].sourceBufferLookup[idx].codePos < code_pos)
             return idx;
+
+        if (idx == 0) {
+            break;
+        }
     }
     return 0xffffffff;
 }
@@ -104,7 +108,7 @@ std::string FormatCodePos(const char* code_pos) {
 size_t GetLineNumber(const char* source_buf, unsigned int source_pos) {
     size_t line_num = 1;
     /* Look for new line characters, and increment the line num */
-    for (int i = 0; i <= source_pos; i++) {
+    for (size_t i = 0; i <= source_pos; i++) {
         if (source_buf[i] == '\0') {
             line_num++;
         }

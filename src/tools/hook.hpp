@@ -8,7 +8,7 @@ namespace memory {
 
 class Hook {
    public:
-    Hook();
+    Hook() = default;
     ~Hook() = default;
 
     void Enable();
