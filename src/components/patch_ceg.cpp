@@ -2,7 +2,6 @@
 
 #include "../tools/memory.hpp"
 
-namespace game {
 namespace components {
 
 /* from linkermod */
@@ -108,4 +107,3 @@ void PatchCEG() {
 }
 
 };  // namespace components
-};  // namespace game

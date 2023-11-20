@@ -327,8 +327,23 @@ struct ThreadDebugInfo {
 };
 
 enum VarTypes {
+    VAR_UNDEFINED = 0x0,
+    VAR_OBJECT = 0x1,
+    VAR_STRING = 0x2,
+    VAR_ISTRING = 0x3,
+    VAR_VECTOR = 0x4,
+    VAR_FLOAT = 0x5,
+    VAR_INT = 0x6,
     VAR_CODEPOS = 0x7,
+    VAR_FUNCTION = 0x9,
     VAR_STACK = 0xa,
+    VAR_ANIMATION = 0xb,
+    VAR_RUNNING_THREAD = 0xd, /* Scr_GetThreadPos */
+    VAR_WAITTILL_THREAD = 0xe,
+    VAR_WAIT_THREAD = 0xf,
+    VAR_OBJECT2 = 0x11,
+    VAR_ENTITY = 0x13,
+    VAR_ARRAY = 0x14,
 };
 
 // static_assert(sizeof(ThreadDebugInfo) == 140);

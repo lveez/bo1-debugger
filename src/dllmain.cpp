@@ -1,10 +1,10 @@
 #include "stdc++.hpp"
 
 #include "components/console.hpp"
-#include "components/debugger.hpp"
 #include "components/patch_ceg.hpp"
+#include "components/threads.hpp"
 
-BOOL Init() {
+BOOL OnAttach() {
     /* allocate external consol */
     if (AllocConsole()) {
         freopen("CONOUT$", "w", stdout);
@@ -14,20 +14,18 @@ BOOL Init() {
         return FALSE;
     }
 
-    game::components::PatchCEG();
+    components::PatchCEG();
 
-    game::components::EnableConsole();
+    components::console::OnAttach();
 
-    game::components::dbg::Initialize();
-
-    game::components::AddConsoleCommands();
+    components::threads::OnAttach();
 
     return TRUE;
 }
 
 BOOL APIENTRY DllMain(HMODULE h_module, DWORD ul_reason_for_call, LPVOID lp_reserved) {
     if (ul_reason_for_call == DLL_PROCESS_ATTACH) {
-        return Init();
+        return OnAttach();
     }
     if (ul_reason_for_call == DLL_PROCESS_DETACH) {
         return FreeConsole();
