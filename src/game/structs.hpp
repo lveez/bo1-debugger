@@ -1,3 +1,4 @@
+/*  Datatypes from BO1. */
 #pragma once
 
 #include "../stdc++.hpp"

@@ -1,5 +1,4 @@
-#pragma once
-
+/* Collection of functions from BO1. */
 #pragma once
 
 #include "structs.hpp"
