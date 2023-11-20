@@ -263,7 +263,7 @@ void DebugThreads(bool dump_to_file, bool analysis) {
     file.close();
 }
 
-void Initalize() {
+void Initialize() {
     /* enable dev mode */
     fn::Dvar_SetCommand("developer", "1");
 }

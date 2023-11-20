@@ -5,6 +5,7 @@ namespace game {
 namespace components {
 
 void EnableConsole();
+void AddConsoleCommands();
 
 };  // namespace components
 };  // namespace game

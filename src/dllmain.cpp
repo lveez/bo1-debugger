@@ -1,6 +1,8 @@
 #include "stdc++.hpp"
 
+#include "components/console.hpp"
 #include "components/debugger.hpp"
+#include "components/patch_ceg.hpp"
 
 BOOL Init() {
     /* allocate external consol */
@@ -11,6 +13,14 @@ BOOL Init() {
     } else {
         return FALSE;
     }
+
+    game::components::PatchCEG();
+
+    game::components::EnableConsole();
+
+    game::components::dbg::Initialize();
+
+    game::components::AddConsoleCommands();
 
     return TRUE;
 }
