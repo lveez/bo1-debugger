@@ -16,7 +16,7 @@ bool PatchNOP(DWORD address, size_t num_bytes) {
     return VirtualProtect(reinterpret_cast<void*>(address), num_bytes, old_protect, nullptr);
 }
 
-bool PatchNOP(DWORD address, DWORD fn_to_call) {
+bool PatchCall(DWORD address, DWORD fn_to_call) {
     DWORD old_protect = 0;
     DWORD data = fn_to_call - address - 5;
 
@@ -46,7 +46,7 @@ bool PatchJump(DWORD address, DWORD destination) {
     return VirtualProtect(reinterpret_cast<void*>(address), 5, old_protect, nullptr);
 }
 
-bool PatchNOP(DWORD address, const char* const bytes, size_t bytes_len) {
+bool PatchBytes(DWORD address, const char* const bytes, size_t bytes_len) {
     DWORD old_protect = 0;
 
     if (VirtualProtect(reinterpret_cast<void*>(address), bytes_len, PAGE_EXECUTE_READWRITE, &old_protect) == FALSE) {
