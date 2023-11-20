@@ -11,7 +11,7 @@ LDFLAGS := -L./dep/lib
 LDLIBS := -lminhook
 
 all:
-	$(CXX) $(ALL_CXXFLAGS) -H $(SRC) $(LDFLAGS) $(LDLIBS) -I./dep/inc -o$(bin_dir)/bo1-debugger.dll
+	$(CXX) $(ALL_CXXFLAGS) $(SRC) $(LDFLAGS) $(LDLIBS) -I./dep/inc -o$(bin_dir)/bo1-debugger.dll
 
 header:
 	$(CXX) $(CXXFLAGS) -std=c++20 src/stdc++.hpp

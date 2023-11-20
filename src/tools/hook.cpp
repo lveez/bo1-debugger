@@ -5,6 +5,7 @@ namespace memory {
 /* forces MH_Initialization */
 /* don't uninitialize because it removes the hooks? */
 class _ {
+   public:
     _() {
         MH_Initialize();
     }

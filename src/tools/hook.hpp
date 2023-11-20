@@ -2,7 +2,7 @@
 #pragma once
 
 #include <MinHook.h>
-#include "stdc++.hpp"
+#include "../stdc++.hpp"
 
 namespace memory {
 
