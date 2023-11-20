@@ -1,8 +1,5 @@
 #include "stdc++.hpp"
 
-#define WIN32_LEAN_AND_MEAN
-#include <windows.h>
-
 BOOL Init() {
     /* allocate external consol */
     if (AllocConsole()) {
