@@ -51,12 +51,11 @@ void __cdecl GivePoints(); /* __cdecl or crashes randomly */
 
 void AddConsoleCommands() {
     /* this never gets deleted... */
-    g::types::cmd_function_s* funcs = new g::types::cmd_function_s[5];
-    g::fn::Cmd_AddCommandInternal("dumpthreads", DumpThreads, funcs);
+    g::types::cmd_function_s* funcs = new g::types::cmd_function_s[4];
+    g::fn::Cmd_AddCommandInternal("dumpthreads", DumpThreads, &funcs[0]);
     g::fn::Cmd_AddCommandInternal("dumpthreadsf", DumpThreadsToFile, &funcs[1]);
     g::fn::Cmd_AddCommandInternal("dumpthreadsa", DumpThreadsAndAnalyse, &funcs[2]);
     g::fn::Cmd_AddCommandInternal("dumpthreadsaf", DumpThreadsToFileAndAnalyse, &funcs[3]);
-    g::fn::Cmd_AddCommandInternal("points", GivePoints, &funcs[4]);
 }
 
 /* these should be threaded otherwise they cause stutter */

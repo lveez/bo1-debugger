@@ -27,8 +27,9 @@ __declspec(selectany) auto Sys_GetValue = reinterpret_cast<void* (*)(int)>(0x67d
 // __declspec(selectany) auto Scr_DumpScriptThreads = reinterpret_cast<void (*)(types::scriptInstance_t)>(0x687f50);
 
 /* printing */
-// __declspec(selectany) auto Com_PrintMessage = reinterpret_cast<void (*)(int, char*, int)>(0x43c520);
+__declspec(selectany) auto Com_PrintMessage = reinterpret_cast<void (*)(int, char*, int)>(0x43c520);
 __declspec(selectany) auto Com_Printf = reinterpret_cast<void (*)(int, const char*)>(0x43bf30);
+__declspec(selectany) auto SL_ConvertToString = reinterpret_cast<const char* (*)(unsigned int, types::scriptInstance_t)>(0x687530);
 
 /* Dvars */
 // __declspec(selectany) auto Dvar_FindVar = reinterpret_cast<const types::dvar_t* (*)(const char*)>(0x5ae810);
@@ -36,11 +37,25 @@ __declspec(selectany) auto Dvar_SetCommand = reinterpret_cast<void (*)(const cha
 __declspec(selectany) auto Dvar_GetString = reinterpret_cast<const char* (*)(const char*)>(0x57ff80);
 
 /* allocation */
-// __declspec(selectany) auto AllocValue = reinterpret_cast<unsigned int(__cdecl*)()>(0x8a6d20);
+__declspec(selectany) auto AllocValue = reinterpret_cast<unsigned int(__cdecl*)()>(0x8a6d20);
 // __declspec(selectany) auto AllocVariable = reinterpret_cast<unsigned short (*)(int)>(0x51f7c0);
+/* we have to hook each allocation function individually, instead of just allocvalue, because regparm won't work... */
+/* I haven't figured out what each function does, some allocate the same variable type? */
+// __declspec(selectany) auto Alloc1 = reinterpret_cast<void (*)(types::scriptInstance_t)>(0x438800);
+// __declspec(selectany) auto Alloc2 = reinterpret_cast<void (*)(types::scriptInstance_t, int)>(0x43c970);
+// __declspec(selectany) auto Alloc3 = reinterpret_cast<void (*)(types::scriptInstance_t, int)>(0x451cf0);
+// __declspec(selectany) auto Alloc4 = reinterpret_cast<void (*)(types::scriptInstance_t, unsigned short, int)>(0x457490);
+// __declspec(selectany) auto Alloc5 = reinterpret_cast<void (*)(types::scriptInstance_t, int, int, int)>(0x4b7050);
+// __declspec(selectany) auto Alloc6 = reinterpret_cast<void (*)(types::scriptInstance_t, int)>(0x506b80);
+// __declspec(selectany) auto Alloc7 = reinterpret_cast<void (*)(types::scriptInstance_t, int)>(0x5147d0);
+// __declspec(selectany) auto Alloc8 = reinterpret_cast<void (*)(types::scriptInstance_t, int)>(0x5e1730);
+// __declspec(selectany) auto Alloc9 = reinterpret_cast<void (*)(types::scriptInstance_t)>(0x603400);
+// __declspec(selectany) auto Alloc10 = reinterpret_cast<void (*)(types::scriptInstance_t, unsigned short)>(0x69e140);
+// __declspec(selectany) auto Alloc11 = reinterpret_cast<void (*)(types::scriptInstance_t, int, int)>(0x8a6e70);
+// __declspec(selectany) auto GetNewVariableIndexInternal3 = reinterpret_cast<unsigned int (*)(types::scriptInstance_t, unsigned int, unsigned int, unsigned int)>(0x8a62e0);
 
 /* running scripts */
-// __declspec(selectany) auto VM_Execute = reinterpret_cast<unsigned int (*)(types::scriptInstance_t, unsigned int, const char*, unsigned int)>(0x8ace60);
+__declspec(selectany) auto VM_Execute = reinterpret_cast<unsigned int (*)(types::scriptInstance_t)>(0x8a8d80);
 
 };  // namespace fn
 };  // namespace game

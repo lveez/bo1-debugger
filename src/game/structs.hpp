@@ -146,10 +146,11 @@ struct scrVmPub_t {
     unsigned int outparamcount;
     function_frame_t function_frame_start[32];
     VariableValue stack[2048];
-    void (*notifyListeners[1])(unsigned int, unsigned int);
 };
 
-static_assert(sizeof(scrVmPub_t) == 17188);
+static_assert(sizeof(scrVmPub_t) == 0x4320);
+static_assert(offsetof(scrVmPub_t, inparamcount) == 0x18);
+static_assert(offsetof(scrVmPub_t, outparamcount) == 0x1c);
 
 union Variable_u {
     unsigned int prev;
@@ -366,6 +367,13 @@ struct CmdArgs {
     int totalUsedTextPool;
 };
 
+struct scr_classStruct_t {
+    unsigned short id;
+    unsigned short entry;
+    unsigned int entArrayId;
+    char* name;
+};
+
 };  // namespace types
 
 namespace globals {
@@ -373,6 +381,7 @@ namespace globals {
 // __declspec(selectany) std::unordered_map<std::string, types::BuiltinFunctionDef> function_map;
 // __declspec(selectany) std::unordered_map<std::string, types::BuiltinMethodDef> method_map;
 // __declspec(selectany) std::unordered_map<std::string, types::cmd_function_s> cmd_function_map;
+// __declspec(selectany) std::vector<size_t> level_vars;
 
 __declspec(selectany) types::field_t* g_consoleField = reinterpret_cast<types::field_t*>(0xc72280);
 __declspec(selectany) types::cmd_function_s* cmd_functions = reinterpret_cast<types::cmd_function_s*>(0x2430014);
@@ -381,11 +390,12 @@ __declspec(selectany) types::scrVarPub_t* gScrVarPub = reinterpret_cast<types::s
 __declspec(selectany) types::scrVarGlob_t* gScrVarGlob = reinterpret_cast<types::scrVarGlob_t*>(0x32c8580);
 
 __declspec(selectany) types::scrVmPub_t* gScrVmPub = reinterpret_cast<types::scrVmPub_t*>(0x32c8738);
-// __declspec(selectany) types::function_stack_t* function_stack = reinterpret_cast<types::function_stack_t*>(0x32d1e38);
+__declspec(selectany) types::function_stack_t* function_stack = reinterpret_cast<types::function_stack_t*>(0x32d1e28);
 
 __declspec(selectany) types::scrParserPub_t* gScrParserPub = reinterpret_cast<types::scrParserPub_t*>(0x32683ec);
 __declspec(selectany) types::scrParserGlob_t* gScrParserGlob = reinterpret_cast<types::scrParserGlob_t*>(0x3268380);
 
+// __declspec(selectany) types::scr_classStruct_t** gScrClassMap = reinterpret_cast<types::scr_classStruct_t**>(0xb8525c);
 // __declspec(selectany) bool* g_mapLoaded = reinterpret_cast<bool*>(0x2ff6902);
 
 };  // namespace globals
