@@ -1,7 +1,6 @@
 *.gch
 *.exe
 .vscode
-*.png
 *.bat
 *.dll
 *.txt
