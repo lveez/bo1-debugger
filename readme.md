@@ -12,11 +12,15 @@ A DLL that dumps the position of the running script threads.
 
 ## Contents
 
-[Why?](#1why)
-[Installation](#installation)
-[Using the debugger](#using-the-debugger)
-[Misc.](#misc)
-[Credits and sources](#credits-and-sources)
+**[Why?](#1why)**
+
+**[Installation](#installation)**
+
+**[Using the debugger](#using-the-debugger)**
+
+**[Misc.](#misc)**
+
+**[Credits and sources](#credits-and-sources)**
 
 ---
 
