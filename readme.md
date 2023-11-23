@@ -30,10 +30,10 @@ Using this allows you to easily see any leaks of threads. I am not sure if other
 
 ### Installation
 
-1. Download the release from github. This contains both `bo1-debugger.dll` and an executable to inject it. If you have a different injector you'd like to use it will work fine.
+1. Download the [release](https://github.com/lveez/bo1-debugger/releases/tag/1.0) from github. This contains both `bo1-debugger.dll` and an executable to inject it. If you have a different injector you'd like to use it will work fine.
 2. Place `bo1-debuggers.dll` in the same folder as `BlackOps.exe`, if it is anywhere else it will not work.
 3. Launch `BlackOps.exe`.
-4. Once you reach the main menu you can launch the executable to inject `bo1-debugger.dll`. The executable can be placed anywhere.
+4. Once you reach the main menu you can launch the executable `injector.exe` to inject `bo1-debugger.dll`. The executable can be placed anywhere.
 5. If the console opens you know it has injected correctly.
 
 ### Using the debugger
